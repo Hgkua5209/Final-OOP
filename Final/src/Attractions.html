@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!-- This is a comment in HTML -->
+<html>
+  <head>
+    <!-- This is a comment in the head section -->
+    <meta charset="UTF-8" />
+    <title>Attraction Page</title>
+    <!-- This is a comment for a CSS stylesheet -->
+    <link rel="stylesheet" href="index.css" />
+    <!-- This is a comment for a Bootstrap CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- This is a comment for a Font Awesome CSS stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- This is a comment for a Bootstrap 5 CSS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- This is a comment for a Bootstrap 5 JavaScript file -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- This is a comment for an OpenTripMap JavaScript file -->
+    <script type="text/javascript" src="https://opentripmap.io/js/directory.en.js"></script>
+    <style>
+      /* Style for the dropdown button */
+      .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+      
+      /* Style for the dropdown button on hover & focus */
+      .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+      }
+      
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      /* Style for the dropdown content (hidden by default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      /* Style for the links inside the dropdown */
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      /* Style for the buttons inside the dropdown */
+      .dropdown-content button {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+      
+      /* Change color of dropdown buttons on hover */
+      .dropdown-content button:hover {
+        background-color: #ddd;
+      }
+      
+      /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+      .show {
+        display:block;
+      }
+      
+      /* Style for the image in the body */
+      body {
+        margin-top: 10px;
+      }
+      
+      img {
+        margin: auto;
+        padding: 10px;
+        display: block;
+        max-width: 100%;
+      }
+      
+      /* Media query for larger screens */
+      @media (min-width: 600px) {
+        img {
+          max-width: 100%;
+        }
+      }
+      
+      /* Style for links */
+      a {
+        cursor: pointer;
+      }
+      
+      /* Style for the "next" button */
+      #next_button {
+        margin-top: 5px;
+        visibility: hidden;
+      }
+      
+/* Style for the attraction page */
+      
+      /* Set box-sizing to border-box to include padding and border in element's total width and height */
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Style for the body */
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      /* Set max-width for the container */
+      .container {
+        max-width: 100%;
+      }
+      
+      /* Clear floats */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      /* Style for a column with a width of 66.66666% */
+      .column-66 {
+        float: left;
+        width: 66.66666%;
+        padding: 20px;
+      }
+      
+      /* Style for a column with a width of 33.33333% */
+      .column-33 {
+        float: left;
+        width: 33.33333%;
+        padding: 20px;
+      }
+      
+      /* Style for large font size */
+      .large-font {
+        font-size: 48px;
+      }
+      
+      /* Style for extra large font size */
+      .xlarge-font {
+        font-size: 64px;
+      }
+      
+      /* Style for button */
+      .button {
+        border: none;
+        color: white;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #04AA6D;
+      }
+            
+
+      /* The following CSS applies to all images on the page */
+      img {
+        /* Make sure the image is fully visible and adjusts its size automatically */
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+
+      /* The following CSS applies when the screen size is smaller than 1000px */
+      @media screen and (max-width: 1000px) {
+        /* The following CSS applies to columns with 66% width and 33% width */
+        .column-66,
+        .column-33 {
+          /* Make the columns take up the full width of the screen */
+          width: 100%;
+          /* Center the text inside the columns */
+          text-align: center;
+        }
+        /* The following CSS applies to all images when the screen size is smaller than 1000px */
+        img {
+          /* Center the image horizontally */
+          margin: auto;
+        }
+      }  
+        
+  </style>
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1098.0" data-gr-ext-installed="">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <!-- navbar brand / title -->
+        <a class="navbar-brand" href="index.html">
+          <span class="text-dark fw-bold">
+            China
+            <center style="color:rgb(236, 39, 39)">
+              Way Of The Dragon
+            </center>
+          </span>
+        </a>
+        <!-- toggle button for mobile nav -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+          aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- navbar links -->
+        <div class="collapse navbar-collapse" id="main-nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Weather.html">Weather</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Attractions.html">Attraction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cuisine.html">Cuisine</a>
+            </li>
+            </div>
+        </div>
+      </div>
+  </nav>
+    <br><br><br><br><br><br><br><br><br><br>
+    <!-- The main header section -->
+    <div style="text-align:center">
+      <h2>Welcome to Attraction</h2> <!-- Page title -->
+      <p>Here are some attration places in China.</p> <!-- Short description -->
+    </div>
+    <br>
+    <!-- The Great wall of china Section -->
+    <div class="container">
+      <div class="row">
+        <div class="column-66">
+          <h1 class="xlarge-font"><b>Great Wall Of China</b></h1> <!-- Title of the first attraction -->
+          <h1 class="large-font" style="color:MediumSeaGreen;"><b>Why Here?</b></h1> <!-- Subtitle for the first attraction -->
+          <!-- Paragraph describing the first attraction -->
+          <p>Great Wall of China, Chinese (Pinyin) Wanli Changcheng or (Wade-Giles romanization) Wan-li Ch’ang-ch’eng (“10,000-Li Long Wall”), extensive bulwark erected in ancient China, one of the largest building-construction projects ever undertaken. The Great Wall actually consists of numerous walls—many of them parallel to each other—built over some two millennia across northern China and southern Mongolia. The most extensive and best-preserved version of the wall dates from the Ming dynasty (1368–1644) and runs for some 5,500 miles (8,850 km) east to west from Mount Hu near Dandong, southeastern Liaoning province, to Jiayu Pass west of Jiuquan, northwestern Gansu province. This wall often traces the crestlines of hills and mountains as it snakes across the Chinese countryside, and about one-fourth of its length consists solely of natural barriers such as rivers and mountain ridges. Nearly all of the rest (about 70 percent of the total length) is actual constructed wall, with the small remaining stretches constituting ditches or moats. Although lengthy sections of the wall are now in ruins or have disappeared completely, it is still one of the more remarkable structures on Earth. The Great Wall was designated a UNESCO World Heritage site in 1987.
+
+            Explore China's iconic cultural monument the Great Wall of China
+            Explore China's iconic cultural monument the Great Wall of ChinaSee all videos for this article
+            Shanhaiguan
+            Shanhaiguan
+            Large parts of the fortification system date from the 7th through the 4th century BCE. In the 3rd century BCE Shihuangdi (Qin Shihuang), the first emperor of a united China (under the Qin dynasty), connected a number of existing defensive walls into a single system. Traditionally, the eastern terminus of the wall was considered to be Shanhai Pass (Shanhaiguan) in eastern Hebei province along the coast of the Bo Hai (Gulf of Chihli), and the wall’s length—without its branches and other secondary sections—was thought to extend for some 4,160 miles (6,700 km). However, government-sponsored investigations that began in the 1990s revealed sections of wall in Liaoning, and aerial and satellite surveillance eventually proved that this wall stretched continuously through much of the province. The greater total length of the Ming wall was announced in 2009.</p>
+            <!-- Button to learn more about the Great Wall of China -->
+            <button class="button" onclick="window.location.href='https://www.britannica.com/topic/Great-Wall-of-China'">Learn More</button>
+        </div>
+        <!-- The image section for the Great Wall of China -->
+        <div class="column-33">
+            <img src="C:\Users\Administrator\Desktop\KPMB\sem 4\OOP\Final Project OOP\img\The_Great_Wall_of_China_at_Jinshanling-edit.jpg" width="635" height="771">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Potala Palace Section -->
+    <div class="container" style="background-color:#f1f1f1; text-align: right;">
+      <div class="row">
+         <!-- This is the left column for the image -->
+        <div class="column-33">
+          <img src="C:\Users\Administrator\Desktop\KPMB\sem 4\OOP\Final Project OOP\img\site_0707_0001-1200-630-20110920202629.jpg" width="835" height="971">
+        </div>
+        <!-- This is the right column for the text content -->
+        <div class="column-66">
+          <h1 class="xlarge-font"><b>Potala Palace</b></h1><!-- Title of the second attraction --> 
+          <h1 class="large-font" style="color:red;"><b>Why Here?</b></h1>  <!-- Subtitle for the second attraction -->
+          <!-- This is the paragraph content for the Potala Palace -->
+          <p>The Potala Palace is a dzong fortress in Lhasa, Tibet. It was the winter palace of the Dalai Lamas from 1649 to 1959, has been a museum since then, and a World Heritage Site since 1994.
+
+            The palace is named after Mount Potalaka, the mythical abode of the bodhisattva Avalokiteśvara.[1] The 5th Dalai Lama started its construction in 1645[2] after one of his spiritual advisers, Konchog Chophel (died 1646), pointed out that the site was ideal as a seat of government, situated as it is between Drepung and Sera monasteries and the old city of Lhasa.[3] It may overlay the remains of an earlier fortress called the White or Red Palace on the site,[4] built by Songtsen Gampo in 637.[5]
+            
+            The building measures 400 metres (1,300 ft) east-west and 350 metres (1,150 ft) north-south, with sloping stone walls averaging 3 metres (9.8 ft) thick, and 5 metres (16 ft) thick at the base, and with copper poured into the foundations to help proof it against earthquakes.[6] Thirteen storeys of buildings, containing over 1,000 rooms, 10,000 shrines and about 200,000 statues, soar 117 metres (384 ft) on top of Marpo Ri, the "Red Hill", rising more than 300 metres (980 ft) in total above the valley floor.[7]
+            
+            Tradition has it that the three main hills of Lhasa represent the "Three Protectors of Tibet". Chokpori, just to the south of the Potala, is the soul-mountain (Wylie: bla ri) of Vajrapani, Pongwari that of Manjusri, and Marpori, the hill on which the Potala stands, represents Avalokiteśvara.[8]</p>
+            <!-- This is the button for the Wikipedia link to learn more about the Potala Palace -->
+          <button class="button" style="background-color:red;" onclick="window.location.href='https://en.wikipedia.org/wiki/Potala_Palace'">Learn More</button>
+        </div>
+      </div>
+    </div>
+    
+<!-- This is a section containing information about Zhangjiajie National Forest Park -->
+<div class="container">
+  <div class="row">
+    <!-- This is the main content column, taking up 66% of the width -->
+    <div class="column-66">
+      <h1 class="xlarge-font"><b>Zhangjiajie National Forest Park</b></h1>
+      <h1 class="large-font" style="color:rgb(50, 216, 208);"><b>Why Here?</b></h1>
+      <p>
+        <!-- This paragraph provides information about the park's history and features -->
+        In 1982, the park was recognized as China's first national forest park with an area of 4,810 ha (11,900 acres).[2] Zhangjiajie National Forest Park is part of a much larger 397.5 km2 (153.5 sq mi) Wulingyuan Scenic Area. In 1992, Wulingyuan was officially recognized as a UNESCO World Heritage Site.[3] It was then approved by the Ministry of Land and Resources as Zhangjiajie Sandstone Peak Forest National Geopark (3,600 km2 (1,400 sq mi)) in 2001. In 2004, Zhangjiajie geopark was listed as a UNESCO global geopark.[citation needed]
+        
+        The most notable geographic features of the park are the pillar-like formations that are seen throughout the park. Although resembling karst terrain, this area is not underlain by limestones and is not the product of chemical dissolution, which is characteristic of limestone karst. They are the result of many years of physical, rather than chemical, erosion. Much of the weathering that forms these pillars is the result of expanding ice in the winter and the plants that grow on them. The weather is moist year-round, and as a result, the foliage is very dense. The weathered material is carried away primarily by streams. These formations are a distinct hallmark of the Chinese landscape, and can be found in many ancient Chinese paintings.[citation needed]
+        
+        One of the park's quartz-sandstone pillars, the 1,080-metre (3,540 ft)[citation needed] Southern Sky Column, was officially renamed "Avatar Hallelujah Mountain" (Chinese: 阿凡达-哈利路亚山; pinyin: Āfándá hālìlùyà shān) in honor of the movie Avatar in January 2010.[4] The film's director and production designers said that they drew inspiration for the floating rocks from mountains from around the world, including those in Hunan province.[5]
+      </p>
+      <!-- This button links to the Wikipedia page about the park -->
+      <button class="button" style="background-color:rgb(50, 216, 208);" onclick="window.location.href='https://en.wikipedia.org/wiki/Zhangjiajie_National_Forest_Park'">Learn More</button>
+    </div>
+    <!-- This is the image column, taking up 33% of the width -->
+    <div class="column-33">
+        <!-- This is an image of the park -->
+        <img src="C:\Users\Administrator\Desktop\KPMB\sem 4\OOP\Final Project OOP\img\china1.jpg" width="835" height="971">
+    </div>
+  </div>
+</div>
+
+
+        <!-- This is a section containing information about Forbidden City -->
+        <div class="container" style="background-color:#f1f1f1; text-align: right;">
+          <div class="row">
+            <!-- Column for the image -->
+            <div class="column-33">
+              <img src="C:\Users\Administrator\Desktop\KPMB\sem 4\OOP\Final Project OOP\img\The_Forbidden_City_-_View_from_Coal_Hill.jpg" width="835" height="971">
+            </div>
+            <!-- Column for the text -->
+            <div class="column-66">
+              <h1 class="xlarge-font"><b>Forbidden City</b></h1>
+              <h1 class="large-font" style="color:rgb(221, 187, 75);"><b>Why Here?</b></h1>
+              <p>Forbidden City, Chinese (Pinyin) Zijincheng or (Wade-Giles romanization) Tzu-chin-ch’eng, imperial palace complex at the heart of Beijing (Peking), China. Commissioned in 1406 by the Yongle emperor of the Ming dynasty, it was first officially occupied by the court in 1420. It was so named because access to the area was barred to most of the subjects of the realm. Government functionaries and even the imperial family were permitted only limited access; the emperor alone could enter any section at will. The 178-acre (72-hectare) compound was designated a UNESCO World Heritage site in 1987 in recognition of its importance as the centre of Chinese power for five centuries, as well as for its unparalleled architecture and its current role as the Palace Museum of dynastic art and history.</p>
+              <button class="button" style="background-color:rgb(221, 187, 75);" onclick="window.location.href='https://www.britannica.com/topic/Forbidden-City'">Learn More</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- This is a section containing information about West Lake -->
+<div class="container">
+  <div class="row">
+    <!-- Column for text content -->
+    <div class="column-66">
+      <!-- Title of the section -->
+      <h1 class="xlarge-font"><b>West Lake</b></h1>
+      <h1 class="large-font" style="color:rgb(60, 82, 179);"><b>Why Here?</b></h1>
+      <!-- Description of West Lake -->
+      <p>West Lake (Chinese: 西湖; Wu Chinese: [si ɦu]) is a freshwater lake in Hangzhou, China. It is divided into five sections by three causeways. There are numerous temples, pagodas, gardens, and natural/artificial islands within the lake. Gushan (孤山) is the largest natural island and three artificial islands: Xiaoyingzhou (小瀛洲), Huixin Pavilion (湖心亭), and Ruan Gongdun (阮公墩) stand at the middle of the lake. Leifeng Pagoda (雷峰塔) and Baochu Pagoda (保俶塔) are separated by the lake. Mirroring each other, the basic pattern of "one mountain, two towers, three islands, three banks, and five lakes" is formed.
+
+      <!-- Location information -->
+      West Lake is located at No. 1 Longjing Road, Xihu District, Hangzhou City, Zhejiang Province, in the west of Hangzhou City. The total area of the scenic spot is 49 square kilometers, the catchment area is 21.22 square kilometers, and the lake area is 6.38 square kilometers.[citation needed]
+      
+      <!-- Additional information about West Lake -->
+      <p>West Lake has influenced poets and painters throughout Chinese history for its natural beauty and historic relics, and it has also been among the most important sources of inspiration for Chinese garden designers.[1] It was made a UNESCO World Heritage Site in 2011, described as having "influenced garden design in the rest of China as well as Japan and Korea over the centuries"[2] and reflecting "an idealized fusion between humans and nature"</p>
+      
+      <!-- Button to learn more about West Lake -->
+      <button class="button" style="background-color:rgb(60, 82, 179);" onclick="window.location.href='https://en.wikipedia.org/wiki/West_Lake'">Learn More</button>
+    </div>
+    <!-- Column for image -->
+    <div class="column-33">
+      <img src="C:\Users\Administrator\Desktop\KPMB\sem 4\OOP\Final Project OOP\img\west-lake-788.jpg" width="635" height="771">
+    </div>
+  </div>
+</div>
+
+    <hr>
+    <br>
+    <br>
+<!-- Create a search form -->
+<h3 style="text-align: center;">Search The City That You Would Like To See The Attration Sight</h3>
+<div class="container">
+    <form id="search_form" class="input-group mb-4 border p-1">
+        <!-- Create a button for submitting the search query -->
+        <div class="input-group-prepend border-0">
+            <button id="button-search" type="submit" class="btn btn-link ">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <!-- Create a text input field for the search query -->
+        <input id="textbox" type="search" placeholder="Region, city, village, etc. (e.g. Moscow)" aria-describedby="button-search" class="form-control bg-none border-0">
+    </form>
+    <!-- Create a div for displaying information related to the search results -->
+    <div id="info" class="alert alert-primary"></div>
+    <!-- Create two columns: one for displaying the list of search results and the other for displaying information about a selected result -->
+    <div class="row">
+        <div class="col-12 col-lg-5">
+            <!-- Create a div for displaying the list of search results -->
+            <div id="list" class="list-group"></div>
+            <!-- Create a button for loading the next page of search results -->
+            <nav class="text-center">
+                <button id="next_button" type="button" class="btn btn-primary">
+                    Next
+                </button>
+            </nav>
+        </div>
+        <div class="col-12 col-lg-7">
+            <!-- Create a div for displaying information about a selected search result -->
+            <div id="poi" class="alert"></div>
+        </div>
+    </div>
+</div>
+<!-- Load a JavaScript file for handling the search functionality -->
+<script src="script.js"></script>
+    <br>
+  </body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+</html>

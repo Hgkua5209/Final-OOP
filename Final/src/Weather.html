@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather Page</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://opentripmap.io/js/directory.en.js"></script>
+    <style>
+		/* Navbar styles */
+		.navbar {
+			background-color: #ffffff;
+			border-bottom: 1px solid #eeeeee;
+		}
+
+		.navbar-brand {
+			font-weight: bold;
+			color: #000000;
+		}
+
+		.navbar-brand span {
+			color: #ec2727;
+		}
+
+		.navbar-toggler {
+			border-color: transparent;
+			color: #000000;
+		}
+
+		.navbar-toggler-icon {
+			background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+		}
+
+		.nav-link {
+			color: #000000;
+			font-weight: 600;
+		}
+
+		.nav-link:hover {
+			color: #ec2727;
+		}
+
+		/* Main section styles */
+		section {
+			margin-top: 100px;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 3rem;
+			color: #ec2727;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 1.5rem;
+			color: #555555;
+			margin-bottom: 50px;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			font-size: 1.2rem;
+			margin-right: 10px;
+			width: 200px;
+            max-width: 100%;
+            
+		}
+
+        /* Center the dropdown and enter button */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+		button {
+			background-color: #ec2727;
+			color: #ffffff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(236, 39, 39, 0.5);
+			cursor: pointer;
+			transition: all 0.3s ease;
+            text-align: center;
+		}
+
+		button:hover {
+			background-color: #ffffff;
+			color: #ec2727;
+			box-shadow: 0 0 10px rgba(236, 39, 39, 0.5), 0 0 20px rgba(236, 39, 39, 0.5);
+        }
+        /* Heading styles */
+        h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin-top: 3rem;
+        }
+
+        /* Subheading styles */
+        p {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        }
+
+        /* Input and button styles */
+        #Type {
+        padding: 1rem;
+        font-size: 1.2rem;
+        border-radius: 0.5rem;
+        border: none;
+        width: 40%;
+        margin-right: 1rem;
+        }
+
+        button {
+        padding: 1rem;
+        font-size: 1.2rem;
+        border-radius: 0.5rem;
+        border: none;
+        background-color: #3498DB;
+        color: white;
+        cursor: pointer;
+        }
+
+        /* Dropdown button styles */
+        .dropdown {
+        display: inline-block;
+        position: relative;
+        
+        }
+        /* color and effect for dropdown and dropdown content  */
+        .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 1rem;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content button {
+        color: black;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        display: block;
+        }
+
+        .dropdown-content button:hover {background-color: #ddd;}
+
+        .show {display:block;}
+
+        /* Weather info styles */
+        #weather-info {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 3rem;
+        }
+
+        * {
+        box-sizing: border-box;
+        }
+
+        /* Box info style */
+        .contain:after {
+        position: relative;
+        content: "";
+        display: table;
+        clear: both;
+        }
+        /* Create three equal columns that floats next to each other */
+        .column {
+        position: relative;
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        height: 900px; /* Should be removed. Only for demonstration */
+        }
+        @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+        }
+        }
+
+        /* sizing for image */
+        img { 
+        float: left;
+        width: 100%;
+        height: 790px;
+        opacity: 1;
+        }
+
+        /* Bottom right text */
+        .text-block { 
+            width: 100%;
+            height: 790px;
+            float: left;
+            background-color: #000000;
+            position: absolute;
+            color: white;
+            padding-left: 20px;
+            padding-right: 20px;
+            opacity: 0.6;
+        }
+
+  </style>
+  </head>
+  <body>
+    <!---nav item-->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- navbar brand / title -->
+      <a class="navbar-brand" href="index.html">
+        <span class="text-dark fw-bold">
+          China
+          <center style="color:rgb(236, 39, 39)">
+            Way Of The Dragon
+          </center>
+        </span>
+      </a>
+      <!-- toggle button for mobile nav -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- navbar links -->
+      <div class="collapse navbar-collapse" id="main-nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Weather.html">Weather</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Attractions.html">Attraction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cuisine.html">Cuisine</a>
+          </li>
+          </div>
+      </div>
+    </div>
+</nav>
+    <br><br><br><br><br><br><br><br>
+<!-- A HTML page with input box to search for weather information -->
+
+<!-- Heading of the page -->
+<h1>Welcome to The Weather Page</h1>
+<!-- Horizontal line to separate the heading and other content -->
+<hr>
+<br><br>
+<!-- A message to the user to enter the country or city name -->
+<h4>Please Enter The Country or City <br> inside the input box to display the weather information</h4>
+<br>
+<!-- Input box for the user to enter the country or city name -->
+<input type="text" id="Type" placeholder="Enter type">
+
+<!-- A container to display the weather information -->
+<div class="container"></div> 
+
+<!-- Button to initiate the search -->
+<button onclick="typing()">Enter</button> 
+
+<!-- A dropdown menu with pre-defined options for the user to select --> 
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+            <button id="Zhangjiakou" onclick="handleButtonClick('Zhangjiakou')">Zhangjiakou</button>
+            <button id="Beijing" onclick="handleButtonClick('Beijing')">Beijing</button>
+            <button id="Shanghai" onclick="handleButtonClick('Shanghai')">Shanghai</button>
+            <button id="Hebei" onclick="handleButtonClick('Hebei')">Hebei</button>
+            <button id="Shanxi" onclick="handleButtonClick('Shanxi')">Shanxi</button>
+            <button id="Sichuan" onclick="handleButtonClick('Sichuan')">Sichuan</button>
+            <button id="Jiangsu" onclick="handleButtonClick('Jiangsu')">Jiangsu</button>
+            <button id="Shaanxi" onclick="handleButtonClick('Shaanxi')">Shaanxi</button>
+            <button id="Anhui" onclick="handleButtonClick('Anhui')">Anhui</button>
+            <button id="Chongqing" onclick="handleButtonClick('Chongqing')">Chongqing</button>
+            <button id="Zhejiang" onclick="handleButtonClick('Zhejiang')">Zhejiang</button>
+            <button id="Guangxi" onclick="handleButtonClick('Guangxi')">Guangxi</button>
+            <button id="Fujian" onclick="handleButtonClick('Fujian')">Fujian</button>
+            <button id="Tianjin" onclick="handleButtonClick('Tianjin')">Tianjin</button>
+            <button id="Hunan" onclick="handleButtonClick('Hunan')">Hunan</button>
+            </div>
+        </div>
+    </div>
+    <!-- A section to display the weather information -->
+    <br><br>
+    <div id="weather-info"></div>
+    <br><br>
+    <!-- A section to display weather information for some pre-defined cities -->
+    <div class="contain">
+            <!-- A column for Beijing -->
+        <div class="column" style="background-color:#bbb;">
+            <img src="C:\Users\Administrator\Desktop\KPMB\sem 4\OOP\Final Project OOP\img\Bejing.jpg">
+            <div class="text-block">
+                <h2>Beijing</h2>
+                <hr>
+                <h2 id="#display1"></h2>
+            </div>
+        </div>
+            <!-- A column for Shanghai -->
+        <div class="column" style="background-color:#bbb;">
+            <img src="C:\Users\Administrator\Desktop\KPMB\sem 4\OOP\Final Project OOP\img\shanghai.jpg">
+            <div class="text-block">
+                <h2>Shanghai</h2>
+                <hr>
+                <h2 id="#display3"></h2>
+            </div>
+        </div>
+            <!-- A column for Zhangjiakou -->
+        <div class="column" style="background-color:#bbb;">
+            <img src="C:\Users\Administrator\Desktop\KPMB\sem 4\OOP\Final Project OOP\img\zhangjiakou.jpg">
+            <div class="text-block">
+                <h2>Zhangjiakou</h2>
+                <hr>
+                <h2 id="#display2"></h2>
+            </div>
+        </div>
+    </div>
+<!-- Js file -->
+<script src="script.js"></script>
+</body>
+</html>

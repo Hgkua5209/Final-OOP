@@ -1,0 +1,220 @@
+<!-- This is an HTML document -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- The character set of the document is set to UTF-8 -->
+    <meta charset="UTF-8" />
+    <!-- The title of the document is set to "Chinese Cuisine" -->
+    <title>Chinese Cuisine</title>
+    <!-- A custom CSS stylesheet is linked to the document -->
+    <link rel="stylesheet" href="index.css" />
+    <!-- The Bootstrap CSS stylesheet is linked to the document -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- The Font Awesome CSS stylesheet is linked to the document -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- The Bootstrap CSS stylesheet version 5.1.3 is linked to the document -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- The Bootstrap JS library version 5.1.3 is linked to the document -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- The OpenTripMap JS library is linked to the document -->
+    <script type="text/javascript" src="https://opentripmap.io/js/directory.en.js"></script>
+    <!-- Custom CSS styles are defined inline -->
+    <style>
+      /* Sets the font family and background color for the document */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #F5F5F5;
+      }
+
+      /* Sets the font family and weight for headings */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'SimHei', sans-serif;
+        font-weight: bold;
+      }
+
+      /* Styles the appearance of buttons */
+      button {
+        background-color: #E60000;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* Styles the appearance of buttons on hover */
+      button:hover {
+        background-color: #FF4D4D;
+      }
+
+      /* Styles the appearance of text input fields */
+      input[type=text] {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #E60000;
+        border-radius: 4px;
+      }
+
+      /* Styles the appearance of the cuisine list */
+      #cuisineList {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+/* Styles the appearance of individual cuisine list items */
+#cuisineList li {
+  display: flex; /* Use flexbox to arrange the content in a column */
+  flex-direction: column;
+  align-items: center; /* Align content in the center */
+  width: 200px; /* Set a fixed width for the list item */
+  margin: 10px; /* Add some margin around the list item */
+  padding: 10px; /* Add some padding inside the list item */
+  background-color: white; /* Set a white background color for the list item */
+  border-radius: 5px; /* Add rounded corners to the list item */
+  box-shadow: 2px 2px 5px #888888; /* Add a box shadow effect to the list item */
+}
+
+#cuisineList li img {
+  width: 150px; /* Set a fixed width for the image */
+  height: 150px; /* Set a fixed height for the image */
+  object-fit: cover; /* Crop the image to fit the container */
+  border-radius: 5px; /* Add rounded corners to the image */
+}
+
+#cuisineList li h4 {
+  text-align: center; /* Center the text */
+  font-size: 18px; /* Set the font size */
+  margin-top: 10px; /* Add some space above the text */
+}
+
+#Food {
+  display: flex; /* Use flexbox to center the content vertically and horizontally */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Arrange the content in a column */
+  margin-top: 50px; /* Add some space above the content */
+}
+
+#Category {
+  display: flex; /* Use flexbox to center the content vertically and horizontally */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Arrange the content in a column */
+  margin-top: 50px; /* Add some space above the content */
+}
+
+#YouTube {
+  display: flex; /* Use flexbox to center the content vertically and horizontally */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Arrange the content in a column */
+  margin-top: 50px; /* Add some space above the content */
+}
+
+#MealImage {
+  display: block; /* Display the image as a block element */
+  margin: 0 auto; /* Center the image horizontally */
+  width: 500px; /* Set a fixed width for the image */
+  height: 300px; /* Set a fixed height for the image */
+  object-fit: cover; /* Crop the image to fit the container */
+  border-radius: 5px; /* Add rounded corners to the image */
+  box-shadow: 2px 2px 5px #888888; /* Add a box shadow effect to the image */
+}
+
+#Instructions {
+  margin-top: 30px; /* Add some space above the content */
+  padding: 20px; /* Add some padding inside the content */
+  background-color: white; /* Set a white background color for the content */
+  border-radius: 5px; /* Add rounded corners to the content */
+  box-shadow: 2px 2px 5px #888888; /* Add a box shadow effect to the content */
+  font-size: 16px; /* Set the font size */
+  line-height: 1.5; /* Set the line height */
+}
+
+#ingredientList {
+  list-style-type: none; /* Remove the bullets from the list */
+  margin: 0; /* Remove the margin from the list */
+}
+  </style>
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1098.0" data-gr-ext-installed="">
+      <!-- Navigation bar -->
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <!-- Navbar brand / title -->
+          <a class="navbar-brand" href="index.html">
+            <span class="text-dark fw-bold">
+              China
+              <center style="color:rgb(236, 39, 39)">
+                Way Of The Dragon
+              </center>
+            </span>
+          </a>
+          <!-- Toggle button for mobile nav -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+            aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <!-- Navbar links -->
+          <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Weather.html">Weather</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Attractions.html">Attraction</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cuisine.html">Cuisine</a>
+              </li>
+              <!-- End of Navbar links -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+      <!-- Page content -->
+      <br><br><br><br><br>
+      <h1>Cuisine Page</h1>
+      <p>Welcome Chinese Cuisine Page.</p>
+      <!-- Button to list Chinese cuisine -->
+      <br><br>
+      <button onclick="listChineseCuisine()">List Chinese Cuisine</button>
+      <ul id="cuisineList"></ul>
+      <br><br>
+      <h3>Please type in The meal you want to cook</h3>
+      <br>
+      <input type="text" id="meal" placeholder="Enter type"> 
+      <button onclick="Meal()">Enter</button> 
+      <br><br>
+      <div id="Food"></div>
+      <br><br>
+      <div id="Category"></div>
+      <br><br>
+      <div id="YouTube"></div>
+      <br><br>
+      <img id="MealImage" src="" alt="">
+      <br><br>
+      <h2>Ingredients:</h2>
+      <ul id="ingredientList"></ul>
+      <br><br>
+      <h2>Instructions:</h2>
+      <div id="Instructions"></div>
+      <!-- End of page content -->
+    
+      <!-- Script file -->
+      <script src="script.js"></script>
+    </body>
+    <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+</html>
